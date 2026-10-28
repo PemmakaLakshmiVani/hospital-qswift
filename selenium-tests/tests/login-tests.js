@@ -41,7 +41,8 @@ export async function createDriver() {
     '--disable-dev-shm-usage',
     '--disable-gpu',
     '--window-size=1440,900',
-    '--ignore-certificate-errors'
+    '--ignore-certificate-errors',
+    '--remote-allow-origins=*'
   );
 
   const driver = await new Builder()
