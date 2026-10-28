@@ -767,9 +767,20 @@ export async function generateTestReportExcel(outputPath) {
   detailsSheet.getColumn('K').width = 12; // Status
 
   // Write file to disk
-  await workbook.xlsx.writeFile(outputPath);
-  console.log(`Successfully generated Excel Test Report with ${totalCases} test cases at: ${outputPath}`);
-  return { totalCases, totalPass, outputPath };
+  try {
+    await workbook.xlsx.writeFile(outputPath);
+    console.log(`Successfully generated Excel Test Report with ${totalCases} test cases at: ${outputPath}`);
+    return { totalCases, totalPass, outputPath };
+  } catch (err) {
+    if (err.code === 'EBUSY') {
+      const fallbackPath = outputPath.replace('.xlsx', `_new.xlsx`);
+      await workbook.xlsx.writeFile(fallbackPath);
+      console.warn(`\n[NOTE] "${path.basename(outputPath)}" is currently open in Microsoft Excel.`);
+      console.log(`[SAVED] Created an updated copy at: ${fallbackPath}`);
+      return { totalCases, totalPass, outputPath: fallbackPath };
+    }
+    throw err;
+  }
 }
 
 // Run directly if executed as main script
