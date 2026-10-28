@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    
+    <!-- Clinical Teal Palette (Patient Portal) -->
+    <color name="clinical_50">#E6F4F5</color>
+    <color name="clinical_100">#C2E5E8</color>
+    <color name="clinical_500">#0E7C86</color>
+    <color name="clinical_600">#0B656D</color>
+    <color name="clinical_700">#084F56</color>
+
+    <!-- Deep Indigo Console Palette (Staff & Doctor Console) -->
+    <color name="indigo_console">#3B3F8C</color>
+    <color name="indigo_dark">#2A2E69</color>
+    <color name="indigo_light">#EEF2FF</color>
+
+    <!-- Amber State (Priority / Alert / Badges) -->
+    <color name="amber_state">#E8A33D</color>
+    <color name="amber_light">#FEF3C7</color>
+    <color name="amber_dark">#B45309</color>
+
+    <!-- Neutral Ink & Paper -->
+    <color name="paper_bg">#F8FAF9</color>
+    <color name="paper_card">#FFFFFF</color>
+    <color name="paper_dark">#F0F4F3</color>
+    <color name="ink_main">#14181F</color>
+    <color name="ink_light">#2D333F</color>
+    <color name="ink_muted">#64748B</color>
+    <color name="border_light">#E2E8F0</color>
+
+    <!-- Status Badges -->
+    <color name="status_green_bg">#DEF7EC</color>
+    <color name="status_green_text">#03543F</color>
+    <color name="status_red_bg">#FDE8E8</color>
+    <color name="status_red_text">#9B1C1C</color>
+    <color name="status_amber_bg">#FEF3C7</color>
+    <color name="status_amber_text">#92400E</color>
+    <color name="status_blue_bg">#E1EFFE</color>
+    <color name="status_blue_text">#1E429F</color>
+</resources>

@@ -1,0 +1,122 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #14181F;
+  --color-ink-light: #2D333F;
+  --color-ink-muted: #64748B;
+
+  --color-paper: #F8FAF9;
+  --color-paper-card: #FFFFFF;
+  --color-paper-dark: #F0F4F3;
+
+  --color-clinical-50: #E6F4F5;
+  --color-clinical-100: #C2E5E8;
+  --color-clinical-500: #0E7C86;
+  --color-clinical-600: #0B656D;
+  --color-clinical-700: #084F56;
+
+  --color-amberState: #E8A33D;
+  --color-amberState-light: #FEF3C7;
+  --color-amberState-dark: #B45309;
+
+  --color-indigoConsole: #3B3F8C;
+  --color-indigoConsole-dark: #2A2E69;
+  --color-indigoConsole-light: #EEF2FF;
+
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+}
+
+html {
+  width: 100%;
+  height: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  width: 100%;
+  min-height: 100%;
+  background-color: #F8FAF9;
+  color: #14181F;
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+  overflow-x: clip;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+#root {
+  min-height: 100%;
+  width: 100%;
+  overflow-x: clip;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  padding-left: env(safe-area-inset-left, 0px);
+  padding-right: env(safe-area-inset-right, 0px);
+}
+
+h1, h2, h3, h4, .font-display {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+/* OPD Ticket Slip Edge Cut & Pattern */
+.opd-slip {
+  position: relative;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px -5px rgba(14, 124, 134, 0.15), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.opd-slip-cutout-left,
+.opd-slip-cutout-right {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: #F8FAF9;
+  border-radius: 50%;
+  top: 55%;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+
+.opd-slip-cutout-left {
+  left: -10px;
+  box-shadow: inset -2px 0 3px rgba(0,0,0,0.06);
+}
+
+.opd-slip-cutout-right {
+  right: -10px;
+  box-shadow: inset 2px 0 3px rgba(0,0,0,0.06);
+}
+
+.opd-dashed-line {
+  border-top: 2px dashed #E2E8F0;
+  width: 100%;
+}
+
+/* Leaflet Map Custom Marker Popup Styles */
+.leaflet-popup-content-wrapper {
+  border-radius: 12px !important;
+  box-shadow: 0 10px 25px -5px rgba(0,0,0,0.15) !important;
+  padding: 4px !important;
+}
+
+.leaflet-popup-content {
+  margin: 12px 14px !important;
+}
+
+/* Pulse animation for serving status */
+@keyframes pulse-teal {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.85; transform: scale(1.02); }
+}
+
+.animate-pulse-teal {
+  animation: pulse-teal 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.font-mono-token {
+  font-family: 'IBM Plex Mono', monospace;
+}

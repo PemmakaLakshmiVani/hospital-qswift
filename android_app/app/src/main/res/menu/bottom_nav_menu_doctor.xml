@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_doctor_queue"
+        android:icon="@drawable/ic_tokens"
+        android:title="OPD Desk" />
+    <item
+        android:id="@+id/nav_doctor_profile"
+        android:icon="@drawable/ic_profile"
+        android:title="My Profile" />
+    <item
+        android:id="@+id/nav_doctor_leave"
+        android:icon="@drawable/ic_history"
+        android:title="Leaves" />
+    <item
+        android:id="@+id/nav_doctor_analytics"
+        android:icon="@drawable/ic_console"
+        android:title="Reports" />
+    <item
+        android:id="@+id/nav_doctor_reviews"
+        android:icon="@drawable/ic_discover"
+        android:title="Reviews" />
+</menu>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_operator_queue"
+        android:icon="@drawable/ic_tokens"
+        android:title="Front Desk" />
+    <item
+        android:id="@+id/nav_operator_reviews"
+        android:icon="@drawable/ic_discover"
+        android:title="Reviews" />
+    <item
+        android:id="@+id/nav_operator_profile"
+        android:icon="@drawable/ic_profile"
+        android:title="Account" />
+</menu>

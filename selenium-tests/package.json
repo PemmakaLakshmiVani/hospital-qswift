@@ -1,0 +1,28 @@
+{
+  "name": "hospital-qswift-selenium-tests",
+  "version": "1.0.0",
+  "description": "Comprehensive E2E Selenium WebDriver test suite and automated test reporting for Hospital Qswift web frontend",
+  "main": "tests/login-tests.js",
+  "type": "module",
+  "scripts": {
+    "test": "node tests/login-tests.js",
+    "test:headless": "node tests/login-tests.js --headless",
+    "generate:report": "node tests/login-tests.js --generate-report-only"
+  },
+  "keywords": [
+    "selenium",
+    "e2e",
+    "automation",
+    "testing",
+    "hospital-qswift"
+  ],
+  "author": "Antigravity Quality Assurance",
+  "license": "ISC",
+  "dependencies": {
+    "exceljs": "^4.4.0",
+    "selenium-webdriver": "^4.29.0"
+  },
+  "devDependencies": {
+    "chromedriver": "^135.0.0"
+  }
+}

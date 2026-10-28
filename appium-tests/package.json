@@ -1,0 +1,26 @@
+{
+  "name": "hospital-qswift-appium-tests",
+  "version": "1.0.0",
+  "description": "Comprehensive E2E Appium Mobile Automation Test Suite for Hospital Qswift Android Frontend",
+  "main": "tests/appium-tests.js",
+  "type": "module",
+  "scripts": {
+    "test": "node tests/appium-tests.js",
+    "test:emulator": "node tests/appium-tests.js --device emulator-5554",
+    "generate:report": "node generate-excel.js"
+  },
+  "keywords": [
+    "appium",
+    "android",
+    "e2e",
+    "testing",
+    "uiautomator2",
+    "hospital-qswift"
+  ],
+  "author": "Antigravity Quality Assurance",
+  "license": "ISC",
+  "dependencies": {
+    "exceljs": "^4.4.0",
+    "webdriverio": "^9.5.0"
+  }
+}
