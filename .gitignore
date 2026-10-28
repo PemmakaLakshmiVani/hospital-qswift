@@ -29,6 +29,7 @@ captures/
 *.swp
 *.swo
 
-# OS files
+# OS & Office lock files
 .DS_Store
 Thumbs.db
+~$*
