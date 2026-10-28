@@ -267,6 +267,25 @@ export default function LoginModal({ onClose, onOpenOnboarding }) {
     e.preventDefault();
     setErrorMessage('');
 
+    if (patientAuthMode === 'mobile_otp') {
+      const validation = loginPatientWithPhone(phoneOrEmail);
+      if (!validation.success) {
+        setErrorMessage(validation.message);
+        setOtpSent(false);
+        return;
+      }
+
+      if (!otpSent) {
+        setOtpSent(true);
+        setPasswordOrOtp('1234');
+        return;
+      }
+
+      login('patient', validation.patient);
+      if (onClose) onClose();
+      return;
+    }
+
     if (isSupabaseConfigured) {
       setSubmitting(true);
       const res = await signInWithSupabase({ email: phoneOrEmail, password: passwordOrOtp });

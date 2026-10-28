@@ -73,6 +73,21 @@ export async function navigateToHome(driver) {
  * Click "Sign In" button in Navbar to trigger LoginModal
  */
 export async function openLoginModal(driver) {
+  // Check if modal is already open
+  const existingModal = await driver.findElements(By.xpath("//div[contains(@class, 'fixed') and .//button[contains(., 'Patient')]]"));
+  if (existingModal.length > 0 && await existingModal[0].isDisplayed()) {
+    console.log('[INFO] LoginModal is already open.');
+    return;
+  }
+
+  // Check if user is logged in (Sign Out button visible)
+  const signOutBtn = await driver.findElements(By.xpath("//button[contains(., 'Sign Out') or contains(., 'Logout')]"));
+  if (signOutBtn.length > 0 && await signOutBtn[0].isDisplayed()) {
+    console.log('[INFO] User currently logged in. Clicking Sign Out...');
+    await signOutBtn[0].click();
+    await driver.sleep(500);
+  }
+
   console.log('[INFO] Locating and clicking "Sign In" button in Navbar...');
   const signInBtn = await driver.wait(
     until.elementLocated(By.xpath("//button[contains(., 'Sign In') or contains(., 'Sign In / Register')]")),
@@ -85,6 +100,21 @@ export async function openLoginModal(driver) {
     CONFIG.timeout
   );
   console.log('[PASS] LoginModal successfully opened.');
+}
+
+/**
+ * Reset authentication session and open a fresh LoginModal
+ */
+export async function resetSessionAndOpenModal(driver) {
+  await driver.executeScript(() => {
+    try {
+      localStorage.clear();
+      sessionStorage.clear();
+    } catch (e) {}
+  });
+  await driver.get(CONFIG.baseUrl);
+  await driver.sleep(800);
+  await openLoginModal(driver);
 }
 
 /**
@@ -286,23 +316,28 @@ export async function runAllTests() {
     await testPatientEmailLogin(driver);
     testResults.push({ name: 'Patient Email & Password Flow', status: 'PASS' });
 
-    // 4. Verify Patient OTP Form
+    // 4. Reset & Verify Patient OTP Form
+    await resetSessionAndOpenModal(driver);
     await testPatientMobileOtp(driver);
     testResults.push({ name: 'Patient Mobile OTP Authentication Flow', status: 'PASS' });
 
-    // 5. Verify Owner Login Form
+    // 5. Reset & Verify Owner Login Form
+    await resetSessionAndOpenModal(driver);
     await testHospitalOwnerLogin(driver);
     testResults.push({ name: 'Hospital Business Owner Auth Flow', status: 'PASS' });
 
-    // 6. Verify Doctor Login Form
+    // 6. Reset & Verify Doctor Login Form
+    await resetSessionAndOpenModal(driver);
     await testDoctorLogin(driver);
     testResults.push({ name: 'Doctor OPD Console Auth Flow', status: 'PASS' });
 
-    // 7. Verify Staff Operator Form
+    // 7. Reset & Verify Staff Operator Form
+    await resetSessionAndOpenModal(driver);
     await testStaffOperatorLogin(driver);
     testResults.push({ name: 'Clinic Staff Operator Auth Flow', status: 'PASS' });
 
-    // 8. Verify Backend Server Configuration Accordion
+    // 8. Reset & Verify Backend Server Configuration Accordion
+    await resetSessionAndOpenModal(driver);
     await testBackendIPTool(driver);
     testResults.push({ name: 'Backend Server IP Settings Tool', status: 'PASS' });
 
